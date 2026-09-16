@@ -6,7 +6,9 @@ const { abi } = JSON.parse(readFileSync("out/MeteredChannel.json", "utf8"));
 const p = new JsonRpcProvider("https://rpc.testnet.arc.io", 5042002);
 const payer = new Wallet(process.env.PRIVATE_KEY_TESTNET, p);
 // chave de teste descartavel, so para este script. Nunca usar com valor real.
-const provider_acct = new Wallet("0xREMOVIDA_DO_HISTORICO", p);
+const provider_acct = process.env.PROVIDER_KEY_TESTNET
+  ? new Wallet(process.env.PROVIDER_KEY_TESTNET, p)      // fixa entre rodadas (saldo de gas persiste)
+  : new Wallet(Wallet.createRandom().privateKey, p);     // efemera; o passo 0 a financia
 
 const ch = new Contract(ADDR, abi, payer);
 const chAsProvider = ch.connect(provider_acct);   // claim parte do provedor

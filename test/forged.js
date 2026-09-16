@@ -5,7 +5,7 @@ const id = readFileSync("/tmp/lastid.txt", "utf8").trim();
 const abi = JSON.parse(readFileSync("out/MeteredChannel.json", "utf8")).abi;
 const p = new JsonRpcProvider("https://rpc.testnet.arc.io", 5042002);
 const payer = new Wallet(process.env.PRIVATE_KEY_TESTNET, p);
-const provider_acct = new Wallet("0x0000000000000000000000000000000000000000000000000000000000000000", p).connect(p);
+const provider_acct = new Wallet(process.env.PROVIDER_KEY_TESTNET, p);
 const ch = new Contract("0x9756E03c81c2a422AA13307203Ae5952dE44F7c6", abi, p);
 const chAsProvider = ch.connect(provider_acct);
 
