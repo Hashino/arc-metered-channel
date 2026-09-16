@@ -1,0 +1,15 @@
+{
+  "name": "arc-metered-channel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Canal de pagamento medido para servicos consumidos por agentes autonomos, na Arc",
+  "scripts": {
+    "build": "node script/compile.js",
+    "deploy": "node script/deploy.js"
+  },
+  "dependencies": {
+    "ethers": "^6.17.0",
+    "solc": "^0.8.37"
+  }
+}
