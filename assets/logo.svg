@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" fill="#0B1220"/>
+  <!-- o canal: aberto do lado do pagador, estreita numa unica saida on-chain -->
+  <path d="M152 368 H616 L872 512 L616 656 H152"
+        fill="none" stroke="#2775CA" stroke-width="26"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- medicao: totais acumulados, cada comprovante maior que o anterior -->
+  <g fill="#2775CA">
+    <rect x="212" y="596" width="48" height="48"  rx="16" opacity="0.55"/>
+    <rect x="292" y="548" width="48" height="96"  rx="16" opacity="0.70"/>
+    <rect x="372" y="500" width="48" height="144" rx="16" opacity="0.85"/>
+    <rect x="452" y="452" width="48" height="192" rx="16"/>
+  </g>
+  <!-- o comprovante liquidado: o unico que vira transacao -->
+  <rect x="532" y="404" width="48" height="240" rx="16" fill="#FFFFFF"/>
+</svg>

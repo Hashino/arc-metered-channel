@@ -49,15 +49,17 @@ gas token: liquidation cost is quoted in the same asset being settled, so *"is i
 yet?"* is a single-quantity comparison — and `breakevenClaim(gasPrice)` answers it on-chain with no
 price oracle. On another chain that function would need an ETH/USD feed to exist at all.
 
-## Live deployment — Arc Testnet
+## Live deployments
 
-| | |
-|---|---|
-| Contract | [`0x9756E03c81c2a422AA13307203Ae5952dE44F7c6`](https://explorer.testnet.arc.io/address/0x9756E03c81c2a422AA13307203Ae5952dE44F7c6) |
-| Deploy cost | 935,575 gas @ 25 Gwei = **0.0234 USDC** |
-| Size | 4,246 bytes |
+| Network | Contract | Deploy cost |
+|---|---|---|
+| **Arc mainnet** (chain 5042) | [`0x0aec193d8Ec9a7c1170cfB7fd97609E50c16CE73`](https://explorer.arc.io/address/0x0aec193d8Ec9a7c1170cfB7fd97609E50c16CE73) | 927,050 gas @ 20 Gwei = **0.0185 USDC** |
+| Arc testnet (chain 5042002) | [`0x9756E03c81c2a422AA13307203Ae5952dE44F7c6`](https://explorer.testnet.arc.io/address/0x9756E03c81c2a422AA13307203Ae5952dE44F7c6) | 935,575 gas @ 25 Gwei = 0.0234 USDC |
 
-`test/exercise.js` runs the full behaviour suite against that deployment — no mocks. **15/15 pass**:
+4,246 bytes of creation bytecode, 4,034 bytes deployed. No constructor arguments — the EIP-712
+domain is fixed at construction, so the same input produced both deployments.
+
+`test/exercise.js` runs the full behaviour suite against the testnet deployment — no mocks. **15/15 pass**:
 
 ```
 1. channel opens           deposit received, expiry set (2h minimum enforced)
