@@ -59,7 +59,10 @@ price oracle. On another chain that function would need an ETH/USD feed to exist
 4,246 bytes of creation bytecode, 4,034 bytes deployed. No constructor arguments — the EIP-712
 domain is fixed at construction, so the same input produced both deployments.
 
-`test/exercise.js` runs the full behaviour suite against the testnet deployment — no mocks. **15/15 pass**:
+`test/exercise.js` runs the full behaviour suite against a live deployment — no mocks, no local
+chain. It runs either network; only the network, the key and the amounts change, never the
+assertions. **15/15 pass on testnet and on Arc mainnet.** The mainnet run is 7 transactions on
+chain 5042, listed with hashes in `SUBMISSION.md`. **15/15 pass**:
 
 ```
 1. channel opens           deposit received, expiry set (2h minimum enforced)
@@ -110,7 +113,8 @@ npm install
 npm run build
 cp .env.example .env               # PRIVATE_KEY_TESTNET / _MAINNET, per-network, no fallback
 node --env-file=.env script/deploy.js testnet
-node --env-file=.env test/exercise.js <contract address>
+node --env-file=.env test/exercise.js <contract address> testnet
+node --env-file=.env test/exercise.js <contract address> mainnet   # USDC de verdade
 ```
 
 Testnet USDC is free from the [Circle faucet](https://faucet.circle.com) — select **Arc Testnet**
